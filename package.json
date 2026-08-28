@@ -1,0 +1,16 @@
+{
+  "name": "celestial-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "The landing page and live demo behind celestial.blackit.hu",
+  "type": "module",
+  "scripts": {
+    "assemble": "node assemble.mjs",
+    "serve": "node assemble.mjs && node serve.mjs",
+    "deploy": "node assemble.mjs && node deploy.mjs"
+  },
+  "dependencies": {
+    "celestial-chart": "github:Fekete85/celestial-chart"
+  },
+  "license": "MIT"
+}
