@@ -38,9 +38,11 @@ locally with `ALLOWED_ORIGINS` set if you want the real path.
 
 ## Privacy
 
-**Nothing leaves the page on load.** No fonts, no analytics, no CDN — the only
-outbound request happens after the visitor presses “My sky now”, and it goes to
-our own time zone service, never a third party.
+**Nothing leaves the page on load without consent.** No fonts, no CDN. The page
+uses Google Analytics, but `consent.js` loads it only after the visitor accepts
+the cookie banner. The only other outbound request happens after the visitor
+presses “My sky now”, and it goes to our own time zone service, never a third
+party.
 
 This is the point the demo is making. Upstream `d3-celestial` shipped the
 author's TimeZoneDB key as a default with `settimezone: true`, so every page
