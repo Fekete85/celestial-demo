@@ -57,9 +57,14 @@ the same shape as `~/csillag`.
 ```bash
 npm run assemble
 tar czf - html nginx.conf docker-compose.yml \
-  | ssh "$DEPLOY_HOST" 'cd ~/celestial && tar xzf -'
+  | ssh "$DEPLOY_HOST" 'cd ~/celestial && tar xzf - \
+      && find html -type d -exec chmod 755 {} + && find html -type f -exec chmod 644 {} +'
 ssh "$DEPLOY_HOST" 'cd ~/celestial && docker compose up -d'
 ```
+
+The `chmod` matters: tar keeps the local file modes, and if the working copy is
+owner-only (`rwx------`, as on a synced drive) the container's nginx user cannot
+read the files and answers every request with 403.
 
 ## Licence
 
